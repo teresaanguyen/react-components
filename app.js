@@ -13,13 +13,25 @@ class GroceryListItemItem extends React.Component {
     });
   }
 
+  onListItemMouseover() {
+    this.setState({
+      done: !this.state.done
+    })
+  }
+
   render() {
     var style = {
       textDecoration: this.state.done ? 'line-through' : 'none'
     };
+    var bold = {
+      fontWeight: this.state.done ?  'bold' : 'normal'
+    };
 
     return (
-      <li style={style} onClick={this.onListItemClick.bind(this)}>{this.props.groceryItems}</li>
+      <div>
+      <li style={bold} onMouseOver={this.onListItemMouseover.bind(this)} onMouseOut={this.onListItemMouseover.bind(this)}>{this.props.groceryItems}</li>
+      {/* <li style={style} onClick={this.onListItemClick.bind(this)}>{this.props.groceryItems}</li> */}
+      </div>
     )
   }
 }
